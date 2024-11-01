@@ -14,14 +14,19 @@ namespace HW10.Entities
 
         public string userName { get; set; }
         public string password { get; set; }
-        public StatusEnum status { get; set; } = StatusEnum.available;
+        public StatusEnum status { get; set; } 
 
         public User(int Id, string username, string password)
         {
             this.Id = Id;
             userName = username;
             this.password = password;
+             this.status = StatusEnum.available;
 
+        }
+        public User()
+        {
+            
         }
         public string ChangeStatus(int status)
         {

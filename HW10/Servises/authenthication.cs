@@ -2,12 +2,13 @@
 using HW10.DB;
 using HW10.Entities;
 using HW10.Reposetories;
+using HW10.setories;
 
 namespace HW10.Servises
 {
     public class authenthication
     {
-        IReposetory repo = new Reposetory();
+        IReposetory repo = new SQLRepo();
         public string Register(string Username, string password)
         {
             List<User>? users = repo.GetAllUsers();

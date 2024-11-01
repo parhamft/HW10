@@ -2,9 +2,10 @@
 using HW10.Entities;
 using HW10.Reposetories;
 using HW10.Servises;
+using HW10.setories;
 
 bool isfinished = false;
-IReposetory repo = new Reposetory();
+IReposetory repo = new SQLRepo();
 authenthication auth = new authenthication();
 UserService service = new UserService();
 User currentUser = null;
@@ -24,7 +25,6 @@ while (isfinished == false)
             if (input[3].ToLower() != "--password") { throw new Exception("the forth input must be (--password)"); }
             dic.Add(input[1].ToLower(), input[2]);
             dic.Add(input[3].ToLower(), input[4]);
-
             Console.WriteLine(auth.Register(dic["--username"], dic["--password"]));
             Console.ReadKey();
         }
@@ -73,11 +73,12 @@ while (isfinished == false)
         }
         else if (input[0].ToLower() == "logout")
         {
-            if (currentUser == null) { throw new Exception("your bot loged in"); }
+            if (currentUser == null) { throw new Exception("your not loged in"); }
             else { currentUser=null; }
             Console.WriteLine("Loged out");
             Console.ReadKey();
         }
+        else { throw new Exception("incorrect input!"); }
     }
     catch (Exception ex)
     {

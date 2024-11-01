@@ -11,8 +11,8 @@ namespace HW10.Contracts
     {
         List<User> GetAllUsers();
         void AddUser(User U);
-        void ChangePassword(int id, string curPassword, string newPassword);
-        void ChangeStatus(int id, int status);
+        bool ChangePassword(int id, string curPassword, string newPassword);
+        void ChangeStatus(int id, int STATUS);
     }
 
 }

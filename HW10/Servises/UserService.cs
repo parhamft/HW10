@@ -1,6 +1,7 @@
 ﻿using HW10.Contracts;
 using HW10.Entities;
 using HW10.Reposetories;
+using HW10.setories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace HW10.Servises
 {
     public class UserService
     {
-        IReposetory repo = new Reposetory();
+        IReposetory repo = new SQLRepo();
         
         public string search(string srch)
         {
@@ -28,7 +29,8 @@ namespace HW10.Servises
         }
         public string ChangePassword(int id, string curpass,string newpass)
         {
-            repo.ChangePassword(id, curpass, newpass);
+            if (repo.ChangePassword(id, curpass, newpass)==false)
+            { return "password is incorrect"; }
             return "password changed";
         }
         public string ChangeStatus(int id, string status)

@@ -11,14 +11,7 @@ namespace HW10.Reposetories
             Storage.AddUserToFile(U);
         }
 
-        public void ChangePassword(int id, string curPassword, string newPassword)
-        {
 
-            List<User>? temp = Storage.GetUserFromFile();
-            var result = temp.First(p => p.Id == id);
-            result.changePassword(curPassword, newPassword);
-            Storage.SaveList(temp);
-        }
 
         public void ChangeStatus(int id, int status)
         {
@@ -31,6 +24,15 @@ namespace HW10.Reposetories
         public List<User> GetAllUsers()
         {
             return Storage.GetUserFromFile();
+        }
+
+        public bool ChangePassword(int id, string curPassword, string newPassword)
+        {
+            List<User>? temp = Storage.GetUserFromFile();
+            var result = temp.First(p => p.Id == id);
+            result.changePassword(curPassword, newPassword);
+            Storage.SaveList(temp);
+            return true;
         }
     }
 }
